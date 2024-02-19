@@ -442,8 +442,9 @@ a:focus {
 
 .about_section .about_container {
   padding: 45px;
-  background-image: url(../images/about-bg.jpg);
-  background-size: cover;
+  background-image: url(../images/banner.JPG);
+  background-size:cover;
+
 }
 
 .about_section .about_container .detail-box {
