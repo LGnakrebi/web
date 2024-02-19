@@ -166,6 +166,8 @@
     .about_section .about_container {
 
         padding: 45px 15px 45px 25px;
+        background-size: cover;
+        background-image: url(../images/banner\ -\ Copy.JPG)
     }
 
     .client_section .box {
