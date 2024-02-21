@@ -84,4 +84,14 @@ border: 2px solid rgb(0, 60, 255);
 .contact-right{
     display: none;
 }
+
+.contact-left-title h2{
+    
+    margin-left: 30px;
+}
+
+.contact-left-title hr{
+    margin-left: 30px;
+}
+
     }
