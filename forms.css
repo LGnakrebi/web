@@ -29,7 +29,7 @@ body{
 }
 .contact-left-title hr{
     border: none;
-    width: 120px;
+    width: 150px;
     height: 5px;
     background-color: rgb(255, 136, 0);
     border-radius: 10px;
@@ -71,8 +71,17 @@ border: 2px solid rgb(0, 60, 255);
     background: orange;
 }
 
+
 @media (max-width: 767px) {
 .contact-inputs{
     width: 80vw;
+   margin-left: 30px;
+}
+
+.contact-left button{
+    margin-left: 30px;
+}
+.contact-right{
+    display: none;
 }
     }
