@@ -70,3 +70,9 @@ border: 2px solid rgb(0, 60, 255);
     cursor: pointer;
     background: orange;
 }
+
+@media (max-width: 767px) {
+.contact-inputs{
+    width: 80vw;
+}
+    }
