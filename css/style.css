@@ -513,7 +513,7 @@ a:focus {
 
 .class_section .class_box-container .box .img-box {
   position: relative;
-  padding-left: 75px;
+  /* padding-left: 75px; */
   background-color: #000000;
 }
 
@@ -578,9 +578,9 @@ a:focus {
 
 .class_section .class_box-container .box .btn-box a {
   display: inline-block;
-  padding: 10px 45px;
+  /* padding: 10px 45px; */
   background-color: #000000;
-  border: 1px solid transparent;
+  border: 1px solid transparent;  
   border-radius: 30px;
   color: #ffffff;
 }
