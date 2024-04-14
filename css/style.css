@@ -55,13 +55,7 @@ body {
 }
 
 /*header section*/
-.hero_area {
-  height: 100vh;
-  background-image: url(../images/2.png);
-  background-repeat: no-repeat;
-  background-size: cover;
-  position: relative;
-}
+
 
 .hero_area::before {
   content: "";
