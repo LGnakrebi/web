@@ -418,7 +418,7 @@ h1, h2, h3, h4, h5,
   right: 0;
   z-index: 2000;
   padding-top: 20px;
-  background: #fff;
+  background: #25262a;
   height: calc(100vh);
   -webkit-transform: translateX(110%);
   -ms-transform: translateX(110%);
@@ -479,7 +479,7 @@ h1, h2, h3, h4, h5,
       padding: 10px 20px;
       display: block;
       position: relative;
-      color: #212529; }
+      color: #d6d7d8; }
       .site-mobile-menu .site-nav-wrap a:hover {
         color:#ee601e; }
     .site-mobile-menu .site-nav-wrap li {
