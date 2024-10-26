@@ -841,7 +841,17 @@
       
    
 <style>
-  /* Full-screen overlay */
+
+
+
+
+
+
+
+
+/* 
+
+ 
   #popup-overlay {
     display: flex;
     align-items: center;
@@ -855,7 +865,7 @@
     visibility: hidden;
   }
   
-  /* Popup box */
+  
   #popup-box {
     background-color: #ee601e;
     color: #333;
@@ -866,7 +876,7 @@
     text-align: center;
   }
 
-  /* Close button */
+  
   #popup-close {
     background-color: #FF4500;
     color: #fff;
@@ -880,7 +890,7 @@
 </head>
 <body>
 
-<!-- Popup Structure -->
+
 <div id="popup-overlay">
   <div id="popup-box">
     <h2>MATCH DAY!</h2>
@@ -891,23 +901,39 @@
 </div>
 
 <script>
-  // Check if the popup has already been shown this session
+  
   if (!sessionStorage.getItem('popupShown')) {
-    // Display the popup on initial page load
+    
     document.getElementById('popup-overlay').style.visibility = 'visible';
     
-    // Set flag in sessionStorage
+    
     sessionStorage.setItem('popupShown', 'true');
   }
 
-  // Close button functionality
+ 
   document.getElementById('popup-close').onclick = function() {
     document.getElementById('popup-overlay').style.visibility = 'hidden';
   };
 </script>
 
 </body>
-</html>
+
+
+
+ */
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     
     
