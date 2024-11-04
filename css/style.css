@@ -664,7 +664,7 @@ h1, h2, h3, h4, h5,
     color: #fff; }
 
 .team-vs {
-  background-color: #0d0f13;
+  background-color: #ee601e;
   overflow: hidden;
   border-radius: 10px;
   margin-top: -90px;
@@ -674,7 +674,7 @@ h1, h2, h3, h4, h5,
   .team-vs .score {
     position: absolute;
     top: 50%;
-    left: 47.6%;
+    left: 48.6%;
     -webkit-transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
