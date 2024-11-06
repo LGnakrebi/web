@@ -40,6 +40,13 @@
             text-align: center;
         }
 
+        /* Close button */
+        .close-btn {
+            float: right;
+            font-size: 18px;
+            cursor: pointer;
+            color: #888;
+        }
 
         .close-btn:hover {
             color: #555;
@@ -98,13 +105,13 @@
     <!-- Pop-up Background -->
     <div class="popup-bg" id="popup-bg">
         <div class="popup-container">
-            
+           
             <div class="poll-question">Greatest Manager of All Time:</div>
             <ul class="poll-options" id="poll-options">
                 <li><button onclick="submitVote('Sir Alex Ferguson')">Sir Alex Ferguson</button></li>
                 <li><button onclick="submitVote('Pep Guardiola')">Pep Guardiola</button></li>
                 <li><button onclick="submitVote('Johan Cruyff')">Johan Cruyff</button></li>
-                <li><button onclick="submitVote('Jürgen Klopp')">Jürgen Klopp</button></li>
+                <li><button onclick="submitVote('')">Jürgen Klopp</button></li>
             </ul>
             <div class="result-container" id="result-container">
                 <div id="result_Sir Alex Ferguson" class="result-bar">Sir Alex Ferguson: <span id="percentage_Sir Alex Ferguson">0%</span></div>
@@ -172,7 +179,10 @@
             });
         }
 
-      
+        // Function to close the popup
+        function closePopup() {
+            document.getElementById('popup-bg').style.display = 'none';
+        }
 
         // Listen for votes on page load
         window.onload = () => {
