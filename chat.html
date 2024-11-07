@@ -9,12 +9,13 @@
         body {
             margin: 0;
             padding: 0;
-            background: linear-gradient(135deg, #3b5998, #8b9dc3);  
+            background: linear-gradient(135deg, #3b5998, #8b9dc3);
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             color: #444;
             display: flex;
             flex-direction: column;
             height: 100vh;
+            overflow: hidden; /* Prevents body from scrolling */
         }
 
         /* Navbar styling */
@@ -32,6 +33,7 @@
             z-index: 1000;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
         }
+
         #navbar a {
             color: #ecf0f1;
             text-decoration: none;
@@ -39,6 +41,7 @@
             font-size: 16px;
             transition: color 0.3s;
         }
+
         #navbar a:hover {
             color: #3498db;
         }
@@ -47,16 +50,15 @@
         #messages {
             margin-top: 60px;
             padding: 20px;
-            background-image: url('logos/logosi.png'); 
+            background-image: url('logos/logosi.png');
             background-position: center;
             background-repeat: no-repeat;
             background-size: 180px 180px;
             background-color: rgba(0, 0, 0, 0.5);
             flex-grow: 1;
-            overflow-y: scroll;  /* Make sure the messages are scrollable */
-            height: calc(100vh - 130px);  /* Subtract navbar height and message input area */
+            overflow-y: auto;  /* Make sure the messages are scrollable */
             box-sizing: border-box;
-            border-bottom: 2px solid #ecf0f1;
+            padding-bottom: 70px; /* Add space for the input field */
         }
 
         /* Message input area */
@@ -73,6 +75,7 @@
             z-index: 100;
             box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
         }
+
         #msgTxt {
             width: 80%;
             height: 45px;
@@ -84,9 +87,11 @@
             color: #333;
             transition: background-color 0.3s ease;
         }
+
         #msgTxt:focus {
             background-color: #fff;
         }
+
         #msgBtn {
             width: 90px;
             height: 45px;
@@ -100,6 +105,7 @@
             font-size: 16px;
             transition: background-color 0.3s ease;
         }
+
         #msgBtn:hover {
             background-color: #2980b9;
         }
@@ -110,6 +116,7 @@
             margin: 15px 0;
             align-items: flex-start;
         }
+
         #inner {
             padding: 12px 20px;
             border-radius: 20px;
@@ -119,12 +126,14 @@
             font-size: 16px;
             line-height: 1.4;
         }
+
         .me {
             background-color: #3498db;
             color: #fff;
             align-self: flex-end;
             margin-left: auto;
         }
+
         .notMe {
             background-color: #ed8a0a;
             color: #333;
@@ -146,9 +155,11 @@
             align-items: center;
             transition: background-color 0.3s ease;
         }
+
         #dltMsg:hover {
             background-color: #c0392b;
         }
+
         #dltMsg:before {
             content: '🗑️'; /* Trash icon */
             font-size: 20px;
@@ -159,16 +170,20 @@
             #navbar a {
                 font-size: 14px;
             }
+
             #msgTxt {
                 font-size: 18px;
             }
+
             #msgBtn {
                 width: 110px;
                 font-size: 18px;
             }
+
             .outer {
                 flex-direction: column;
             }
+
             #inner {
                 max-width: 100%;
             }
@@ -179,10 +194,12 @@
             #sendMsg {
                 height: 80px;
             }
+
             #msgTxt {
                 height: 50px;
                 font-size: 18px;
             }
+
             #msgBtn {
                 width: 120px;
                 height: 50px;
@@ -210,6 +227,7 @@
     <script>
         module = {};
     </script>
+
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-app.js";
         import { getDatabase, ref, set, remove, onChildAdded, onChildRemoved } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-database.js";
@@ -270,9 +288,13 @@
 
         // When message is deleted
         onChildRemoved(ref(db, "messages"), (data) => {
-            var msgBox = document.getElementById(data.key);
-            if (msgBox) messages.removeChild(msgBox);
+            document.getElementById(data.key).remove();
         });
+
+        // Initialize chat by setting the message area to the bottom
+        window.onload = () => {
+            messages.scrollTop = messages.scrollHeight;
+        }
     </script>
 </body>
 </html>
