@@ -48,19 +48,19 @@
 
         /* Message container */
         #messages {
-            margin-top: 60px;
+            flex-grow: 1;
+            overflow-y: auto;  /* Make sure the messages are scrollable */
+            display: flex;
+            flex-direction: column-reverse; /* Display the latest message at the bottom */
             padding: 20px;
             background-image: url('logos/logosi.png');
             background-position: center;
             background-repeat: no-repeat;
             background-size: 180px 180px;
             background-color: rgba(0, 0, 0, 0.5);
-            flex-grow: 1;
-            overflow-y: auto;  /* Make sure the messages are scrollable */
             box-sizing: border-box;
-            padding-bottom: 70px; /* Add space for the input field */
-            display: flex;
-            flex-direction: column-reverse; /* Display the latest message at the bottom */
+            margin-top: 60px; /* Prevents navbar from covering content */
+            padding-bottom: 70px; /* Space for the input field */
         }
 
         /* Message input area */
@@ -280,14 +280,13 @@
             }
         });
 
-        // Delete message
-        module.dltMsg = function dltMsg(key) {
-            remove(ref(db, "messages/" + key));
-            document.getElementById(key).remove();
+        // Delete messages
+        module.dltMsg = function dltMsg(id) {
+            remove(ref(db, 'messages/' + id));
         };
 
-        // Initialize chat by scrolling to the bottom on page load
-        window.onload = () => {
+        // Scroll to the bottom
+        window.onload = function () {
             var messages = document.getElementById('messages');
             messages.scrollTop = messages.scrollHeight;
         };
