@@ -59,6 +59,8 @@
             overflow-y: auto;  /* Make sure the messages are scrollable */
             box-sizing: border-box;
             padding-bottom: 70px; /* Add space for the input field */
+            display: flex;
+            flex-direction: column-reverse; /* Display the latest message at the bottom */
         }
 
         /* Message input area */
@@ -276,25 +278,19 @@
                                             <div id="inner" class="notMe">${data.val().sender}: ${data.val().msg}</div>
                                         </div>`;
             }
-
-            // Scroll to the bottom after adding a new message
-            messages.scrollTop = messages.scrollHeight;
         });
 
         // Delete message
         module.dltMsg = function dltMsg(key) {
             remove(ref(db, "messages/" + key));
-        }
+            document.getElementById(key).remove();
+        };
 
-        // When message is deleted
-        onChildRemoved(ref(db, "messages"), (data) => {
-            document.getElementById(data.key).remove();
-        });
-
-        // Initialize chat by setting the message area to the bottom
+        // Initialize chat by scrolling to the bottom on page load
         window.onload = () => {
+            var messages = document.getElementById('messages');
             messages.scrollTop = messages.scrollHeight;
-        }
+        };
     </script>
 </body>
 </html>
