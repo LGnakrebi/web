@@ -48,18 +48,18 @@
 
         /* Message container */
         #messages {
-    margin-top: 60px; /* Add margin to make space for the navbar */
-    padding: 20px;
-    background-image: url('logos/logosi.png');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: 180px 180px;
-    background-color: rgba(0, 0, 0, 0.5);
-    flex-grow: 1;
-    overflow-y: auto;  /* Make sure the messages are scrollable */
-    box-sizing: border-box;
-    padding-bottom: 70px; /* Add space for the input field */
-}
+            margin-top: 60px; /* Default for PC */
+            padding: 20px;
+            background-image: url('logos/logosi.png');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: 180px 180px;
+            background-color: rgba(0, 0, 0, 0.5);
+            flex-grow: 1;
+            overflow-y: auto;  /* Make sure the messages are scrollable */
+            box-sizing: border-box;
+            padding-bottom: 70px; /* Add space for the input field */
+        }
 
         /* Message input area */
         #sendMsg {
@@ -187,10 +187,20 @@
             #inner {
                 max-width: 100%;
             }
+
+            /* Ensure message container is visible on mobile */
+            #messages {
+                margin-top: 60px; /* Keep the margin-top for mobile */
+                padding: 15px; /* Reduce padding on smaller screens */
+            }
         }
 
-        /* Mobile message input */
         @media (max-width: 480px) {
+            #messages {
+                margin-top: 70px; /* Increase margin-top to avoid navbar covering */
+                padding: 10px; /* Further reduce padding */
+            }
+
             #sendMsg {
                 height: 80px;
             }
@@ -288,13 +298,9 @@
 
         // When message is deleted
         onChildRemoved(ref(db, "messages"), (data) => {
-            document.getElementById(data.key).remove();
+            var msg = document.getElementById(data.key);
+            msg.remove();
         });
-
-        // Initialize chat by setting the message area to the bottom
-        window.onload = () => {
-            messages.scrollTop = messages.scrollHeight;
-        }
     </script>
 </body>
 </html>
