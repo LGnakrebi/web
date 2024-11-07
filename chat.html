@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chorus</title>
+    <style>
+        /* Base styles */
+        body { 
+            margin: 0; 
+            padding: 0; 
+            background: #000; 
+            font-family: 'Arial', sans-serif; 
+            color: #fff;
+        }
+        
+        /* Navbar styling */
+        #navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 50px;
+            background: #ff8c00;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            box-sizing: border-box;
+            z-index: 1000;
+        }
+        #navbar a {
+            color: #fff;
+            text-decoration: none;
+            margin-right: 20px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        #navbar a:last-child {
+            margin-right: 0;
+        }
+
+        /* Message container */
+        #messages {
+            margin-top: 50px;
+            padding: 10px;
+            height: calc(100vh - 120px);
+            background: linear-gradient(orange, #ff8c00);
+            overflow-y: auto;
+            box-sizing: border-box;
+        }
+
+        /* Message input area */
+        #sendMsg {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            height: 60px;
+            background: #333;
+            display: flex;
+            align-items: center;
+            padding: 0 10px;
+            box-sizing: border-box;
+            z-index: 100;
+        }
+        #msgTxt {
+            width: calc(100% - 90px);
+            height: 35px;
+            padding-left: 10px;
+            border: none;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 14px;
+            background: #fff;
+            color: #333;
+        }
+        #msgBtn {
+            width: 80px;
+            height: 35px;
+            margin-left: 10px;
+            background: #ff8c00;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        /* Message box styles */
+        .outer {
+            display: flex;
+            margin: 10px 0;
+        }
+        #inner {
+            padding: 10px;
+            border-radius: 10px;
+            max-width: 70%;
+            word-wrap: break-word;
+            box-sizing: border-box;
+            font-size: 14px;
+        }
+        .me {
+            background: #ff8c00;
+            color: #fff;
+            align-self: flex-end;
+            margin-left: auto;
+        }
+        .notMe {
+            background: #fff;
+            color: #000;
+        }
+
+        /* Button styling */
+        #dltMsg {
+            margin-top: 5px;
+            background: #333;
+            color: #ff8c00;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+
+        /* Mobile responsive styles */
+        @media (max-width: 768px) {
+            #navbar a {
+                font-size: 12px;
+            }
+            #msgTxt {
+                height: 40px;
+                font-size: 16px;
+            }
+            #msgBtn {
+                width: 100px;
+                height: 40px;
+                font-size: 16px;
+            }
+            .outer {
+                flex-direction: column;
+            }
+            #inner {
+                max-width: 100%;
+                font-size: 16px;
+            }
+        }
+
+        /* Mobile message input */
+        @media (max-width: 480px) {
+            #sendMsg {
+                height: 70px;
+            }
+            #msgTxt {
+                height: 45px;
+                font-size: 18px;
+            }
+            #msgBtn {
+                width: 100px;
+                height: 45px;
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <div id="navbar">
+        <a href="index.html">Home</a>
+       
+    </div>
+
+    <!-- Messages area -->
+    <div id="messages"></div>
+
+    <!-- Message input area -->
+    <div id="sendMsg">
+        <input type="text" id="msgTxt" placeholder="Type your message...">
+        <input type="submit" id="msgBtn" value="Send" onclick="module.sendMsg()">
+    </div>
+
+    <script>
+        module = {};
+    </script>
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-app.js";
+        import { getDatabase, ref, set, remove, onChildAdded, onChildRemoved } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-database.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyBpfkkOznjSvyyaEWNsG00huwlA8ObY6j8",
+            authDomain: "chat-80d74.firebaseapp.com",
+            projectId: "chat-80d74",
+            storageBucket: "chat-80d74.appspot.com",
+            messagingSenderId: "1085559718603",
+            appId: "1:1085559718603:web:c7a9a7f26b1535d080514e"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase(app);
+
+        var msgTxt = document.getElementById('msgTxt');
+        var sender;
+        if (sessionStorage.getItem('sender')) {
+            sender = sessionStorage.getItem('sender');
+        } else {
+            sender = prompt('Enter your name');
+            sessionStorage.setItem('sender', sender);
+        }
+
+        // Send messages
+        module.sendMsg = function sendMsg() {
+            var msg = msgTxt.value;
+            var timestamp = new Date().getTime();
+            set(ref(db, "messages/" + timestamp), {
+                msg: msg,
+                sender: sender
+            });
+            msgTxt.value = "";
+        }
+
+        // Receive messages
+        onChildAdded(ref(db, "messages"), (data) => {
+            if (data.val().sender == sender) {
+                messages.innerHTML += `<div class="outer" style="justify-content: flex-end" id="${data.key}">
+                                            <div id="inner" class="me">You: ${data.val().msg}
+                                            <button id="dltMsg" onclick="module.dltMsg(${data.key})">DELETE</button></div>
+                                        </div>`;
+            } else {
+                messages.innerHTML += `<div class="outer" id="${data.key}">
+                                            <div id="inner" class="notMe">${data.val().sender}: ${data.val().msg}</div>
+                                        </div>`;
+            }
+        });
+
+        // Delete message
+        module.dltMsg = function dltMsg(key) {
+            remove(ref(db, "messages/" + key));
+        }
+
+        // When message is deleted
+        onChildRemoved(ref(db, "messages"), (data) => {
+            var msgBox = document.getElementById(data.key);
+            if (msgBox) messages.removeChild(msgBox);
+        });
+    </script>
+</body>
+</html>
