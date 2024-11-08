@@ -48,7 +48,7 @@
 
         /* Message container */
         #messages {
-            margin-top: 60px; /* Offset to leave space for navbar */
+            margin-top: 60px; /* Leave space for navbar */
             padding: 20px;
             background-image: url('logos/logosi.png');
             background-position: center;
@@ -60,7 +60,7 @@
             box-sizing: border-box;
             padding-bottom: 70px; /* Space for the input area */
             display: flex;
-            flex-direction: column;
+            flex-direction: column; /* Order messages from top to bottom */
         }
 
         /* Message input area */
@@ -141,7 +141,7 @@
             color: #333;
         }
 
-        /* Delete button styling */
+        /* Button styling */
         #dltMsg {
             margin-top: 8px;
             background-color: #e74c3c;
@@ -163,7 +163,7 @@
         }
 
         #dltMsg:before {
-            content: '🗑️';
+            content: '🗑️'; /* Trash icon */
             font-size: 20px;
         }
 
@@ -174,23 +174,32 @@
             }
 
             #msgTxt {
-                font-size: 16px;
+                font-size: 18px;
             }
 
             #msgBtn {
-                width: 90px;
-                font-size: 16px;
+                width: 110px;
+                font-size: 18px;
             }
 
+            .outer {
+                flex-direction: column;
+            }
+
+            #inner {
+                max-width: 100%;
+            }
+
+            /* Ensure message container is visible on mobile */
             #messages {
-                margin-top: 70px; /* Extra margin to avoid overlap */
+                margin-top: 60px;
                 padding: 15px;
             }
         }
 
         @media (max-width: 480px) {
             #messages {
-                margin-top: 75px; /* Ensure space on smaller screens */
+                margin-top: 70px; /* Increase margin-top to avoid navbar covering */
                 padding: 10px;
             }
 
@@ -200,13 +209,13 @@
 
             #msgTxt {
                 height: 50px;
-                font-size: 16px;
+                font-size: 18px;
             }
 
             #msgBtn {
-                width: 100px;
+                width: 120px;
                 height: 50px;
-                font-size: 16px;
+                font-size: 18px;
             }
         }
     </style>
@@ -236,7 +245,7 @@
         import { getDatabase, ref, set, remove, onChildAdded, onChildRemoved } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-database.js";
 
         const firebaseConfig = {
-            apiKey: "API_KEY_HERE",
+            apiKey: "AIzaSyBpfkkOznjSvyyaEWNsG00huwlA8ObY6j8",
             authDomain: "chat-80d74.firebaseapp.com",
             projectId: "chat-80d74",
             storageBucket: "chat-80d74.appspot.com",
@@ -279,6 +288,8 @@
                                             <div id="inner" class="notMe">${data.val().sender}: ${data.val().msg}</div>
                                         </div>`;
             }
+
+            // Scroll to the bottom after adding a new message
             messages.scrollTop = messages.scrollHeight;
         });
 
