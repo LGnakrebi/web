@@ -300,8 +300,7 @@
 
         // Remove deleted messages
         onChildRemoved(ref(db, "messages"), (data) => {
-            var msg = document.getElementById(data.key);
-            msg.remove();
+            document.getElementById(data.key).remove();
         });
     </script>
 </body>
