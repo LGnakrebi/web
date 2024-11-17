@@ -253,9 +253,10 @@ jQuery(document).ready(function($) {
 
 	var siteCountDown = function() {
 
-		$('#date-countdown, #date-countdown2').countdown('2024/11/17', function(event) {
+		$('#date-countdown, #date-countdown2').countdown('2024/11/28', function(event) {
 		  var $this = $(this).html(event.strftime(''
-		  
+		    
+		    + '<span class="countdown-block"><span class="label">%w</span> weeks </span>'
 		    + '<span class="countdown-block"><span class="label">%d</span> days </span>'
 		    + '<span class="countdown-block"><span class="label">%H</span> hr </span>'
 		    + '<span class="countdown-block"><span class="label">%M</span> min </span>'
