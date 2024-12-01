@@ -32,7 +32,156 @@
 </head>
 
 <body>
+ <!-- Font Awesome Icon CDN for using icons -->
+ <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 
+ <div class="loader" id="loader">
+     <div class="icon-circle">
+         <div class="icon"><i class="fas fa-star"></i></div>
+         <div class="icon"><i class="fas fa-star"></i></div>
+         <div class="icon"><i class="fas fa-star"></i></div>
+         <div class="icon"><i class="fas fa-star"></i></div>
+         <div class="icon"><i class="fas fa-star"></i></div>
+         <div class="icon"><i class="fas fa-star"></i></div>
+         <div class="icon"><i class="fas fa-star"></i></div>
+         <div class="icon"><i class="fas fa-star"></i></div>
+         <div class="icon"><i class="fas fa-star"></i></div>
+         <div class="icon"><i class="fas fa-star"></i></div>
+         <div class="icon"><i class="fas fa-star"></i></div>
+         <div class="icon"><i class="fas fa-star"></i></div>
+     </div>
+     <div class="logo">
+         <img src="logos/newscaled.png" alt="Logo" width="100">
+     </div>
+     
+ </div>
+ 
+ <style>
+   /* Reset and basic styles */
+   * {
+     margin: 0;
+     padding: 0;
+     box-sizing: border-box;
+   }
+ 
+   /* Loader Styles */
+   .loader {
+     position: fixed;
+     top: 0;
+     left: 0;
+     width: 100%;
+     height: 100%;
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
+     background-color: #0077ff;
+     color: #ee601e; /* Orange color */
+     transition: opacity 0.5s ease, visibility 0.5s ease;
+     opacity: 1;
+     visibility: visible;
+     z-index: 9999; /* Ensure it stays on top */
+   }
+ 
+   .loader.hidden {
+     opacity: 0;
+     visibility: hidden;
+   }
+ 
+   /* Rotating icon circle around the logo */
+   .icon-circle {
+     position: absolute;
+     width: 200px;
+     height: 200px;
+     border-radius: 50%;
+     animation: rotateIcons 10s infinite linear;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+   }
+ 
+   /* Icons positioned around the circle */
+   .icon {
+     position: absolute;
+     font-size: 20px; /* Size of the icon */
+     color: #FFD700; /* Gold color for stars */
+   }
+ 
+   /* Correct positions of icons in 12-point circle */
+   .icon:nth-child(1) { transform: rotate(0deg) translateY(-90px) rotate(0deg); }
+   .icon:nth-child(2) { transform: rotate(30deg) translateY(-90px) rotate(-30deg); }
+   .icon:nth-child(3) { transform: rotate(60deg) translateY(-90px) rotate(-60deg); }
+   .icon:nth-child(4) { transform: rotate(90deg) translateY(-90px) rotate(-90deg); }
+   .icon:nth-child(5) { transform: rotate(120deg) translateY(-90px) rotate(-120deg); }
+   .icon:nth-child(6) { transform: rotate(150deg) translateY(-90px) rotate(-150deg); }
+   .icon:nth-child(7) { transform: rotate(180deg) translateY(-90px) rotate(-180deg); }
+   .icon:nth-child(8) { transform: rotate(210deg) translateY(-90px) rotate(-210deg); }
+   .icon:nth-child(9) { transform: rotate(240deg) translateY(-90px) rotate(-240deg); }
+   .icon:nth-child(10) { transform: rotate(270deg) translateY(-90px) rotate(-270deg); }
+   .icon:nth-child(11) { transform: rotate(300deg) translateY(-90px) rotate(-300deg); }
+   .icon:nth-child(12) { transform: rotate(330deg) translateY(-90px) rotate(-330deg); }
+ 
+   /* Bounce animation for icons */
+   @keyframes bounce {
+     0% {
+         transform: translateY(0);
+     }
+     100% {
+         transform: translateY(-10px);
+     }
+   }
+ 
+   /* Rotate the icon circle */
+   @keyframes rotateIcons {
+     0% {
+       transform: rotate(0deg);
+     }
+     100% {
+       transform: rotate(360deg);
+     }
+   }
+ 
+   .logo {
+     position: relative;
+     z-index: 2;
+   }
+ 
+   .text {
+     margin-top: 10px;
+     font-size: 1.5rem;
+     color: #ee601e;
+     text-align: center;
+   }
+ 
+   /* Responsive Text Size */
+   @media (max-width: 768px) {
+     .text {
+         font-size: 1.2rem;
+     }
+   }
+ </style>
+ 
+ <script>
+   window.addEventListener("load", () => {
+     // Hide the loader with a smooth fade-out effect
+     const loader = document.getElementById("loader");
+     loader.classList.add("hidden");
+ 
+     // Display the main content after a short delay for the transition
+     setTimeout(() => {
+         document.querySelector(".content").style.display = "block";
+     }, 500); // Matches the CSS transition duration
+   });
+ </script>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
   <div class="site-wrap">
 
     <div class="site-mobile-menu site-navbar-target">
