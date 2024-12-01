@@ -66,22 +66,22 @@
  
    /* Loader Styles */
    .loader {
-     position: fixed;
-     top: 0;
-     left: 0;
-     width: 100%;
-     height: 100%;
-     display: flex;
-     flex-direction: column;
-     justify-content: center;
-     align-items: center;
-     background-color: #0077ff;
-     color: #ee601e; /* Orange color */
-     transition: opacity 0.5s ease, visibility 0.5s ease;
-     opacity: 1;
-     visibility: visible;
-     z-index: 9999; /* Ensure it stays on top */
-   }
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #0077ff;
+    color: #0077ff; /* Orange color */
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+    opacity: 1;
+    visibility: visible;
+    z-index: 9999; /* Ensure it stays on top */
+  }
  
    .loader.hidden {
      opacity: 0;
