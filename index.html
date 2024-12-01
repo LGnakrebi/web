@@ -243,8 +243,64 @@
 
 
     <div >
-      <div class="hero overlay"></div>
-
+      
+      <div class="hero overlay">
+        <div class="hero-text">
+          <p>In times of change, unity is our greatest strength. Together as Georgia, united with Europe.</p>
+        </div>
+      </div>
+      
+      <style>
+      /* Default background for larger screens (PC) */
+      .hero.overlay {
+        background-image: url('images/Bannereu.png');
+        background-size: cover;
+        background-position: center;
+        height: 100vh; /* Adjust as needed */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        color: white; /* Text color */
+        text-align: center; /* Center text */
+        padding: 0 20px; /* Padding to ensure text doesn't touch the edges */
+      }
+      
+      .hero-text {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 2rem; /* Adjust font size */
+        line-height: 1.4; /* Add some line spacing for readability */
+        max-width: 80%; /* Prevent text from stretching too wide */
+        padding: 0 20px; /* Optional padding for text */
+      }
+      
+      /* Background for mobile devices */
+      @media (max-width: 768px) {
+        .hero.overlay {
+          background-image: url('images/baneu.png'); /* Replace with your mobile image */
+        }
+      
+        .hero-text {
+          font-size: 1.5rem; /* Slightly smaller font size for mobile */
+          line-height: 1.5; /* Increased line spacing for better readability on mobile */
+          max-width: 90%; /* Allow more room for text */
+          padding: 0 10px; /* Adjust padding for smaller screens */
+        }
+      
+        /* Make text even smaller on very small devices */
+        @media (max-width: 480px) {
+          .hero-text {
+            font-size: 1.2rem; /* Smaller font size for very small devices */
+            line-height: 1.5; /* Consistent line spacing */
+            max-width: 90%; /* Keep text within bounds */
+          }
+        }
+      }
+      </style>
+      
 <style>
 /* Default background for larger screens (PC) */
 .hero.overlay {
@@ -260,7 +316,9 @@
     background-image: url('images/baneu.png'); /* Replace with your mobile image */
   }
 }
+
 </style>
+
 
       <div class="container">
         <div class="row align-items-center">
