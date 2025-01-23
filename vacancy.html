@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form</title>
+
+  
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #000;
+      font-family: Arial, sans-serif;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .form {
+      background-color: #15172b;
+      border-radius: 20px;
+      padding: 30px;
+      width: 90%;
+      max-width: 400px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      box-sizing: border-box;
+    }
+
+    .title {
+      color: #eee;
+      font-size: 2em;
+      font-weight: 600;
+      text-align: center;
+      margin-bottom: 15px;
+    }
+
+    .subtitle {
+      color: #eee;
+      font-size: 1em;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .input-container {
+      position: relative;
+      margin-bottom: 25px;
+      width: 100%;
+    }
+
+    .input {
+      background-color: #303245;
+      border-radius: 12px;
+      border: 0;
+      color: #eee;
+      font-size: 1em;
+      padding: 10px 20px;
+      width: 100%;
+      outline: 0;
+      transition: border-color 0.3s;
+    }
+
+    .input:focus {
+      border: 1px solid rgb(221, 129, 0);
+    }
+
+    .placeholder {
+      position: absolute;
+      top: 10px;
+      left: 20px;
+      font-size: 1em;
+      color: #65657b;
+      transition: 0.3s ease;
+      pointer-events: none;
+    }
+
+    .input:focus ~ .placeholder,
+    .input:not(:placeholder-shown) ~ .placeholder {
+      transform: translateY(-18px);
+      font-size: 0.85em;
+      color: rgb(221, 129, 0);
+    }
+
+    .submit {
+      background-color: rgb(223, 115, 15);
+      border-radius: 12px;
+      border: none;
+      color: #eee;
+      cursor: pointer;
+      font-size: 1em;
+      padding: 15px;
+      width: 100%;
+      text-align: center;
+      transition: background-color 0.3s;
+    }
+
+    .submit:hover {
+      background-color: rgb(14, 49, 77);
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .title {
+        font-size: 1.8em;
+      }
+
+      .subtitle {
+        font-size: 0.9em;
+      }
+
+      .input {
+        font-size: 0.95em;
+      }
+
+      .submit {
+        font-size: 0.95em;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .form {
+        padding: 20px;
+      }
+
+      .title {
+        font-size: 1.5em;
+      }
+
+      .subtitle {
+        font-size: 0.85em;
+      }
+
+      .input {
+        font-size: 0.9em;
+      }
+
+      .submit {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+    }
+  </style>
+  
+</head>
+
+
+
+
+
+
+
+
+
+
+
+
+<body>
+  <div class="form">
+    <form action="https://api.web3forms.com/submit" method="POST" class="contact-left">
+    <div class="title">Welcome</div>
+    <div class="subtitle">ლოგოსის ფეხბურთის ნაკრებს ესაჭიროება კომენტატორი და სტრიმერ ტექნიკოსი. სურვილის შემთხვევაში შეავსეთ ქვემოთ მოცემული ფორმა.</div>
+    <input type="hidden" name="access_key" value="d070a614-421b-4f63-ad20-9f3e51ecefb6">
+    <div class="input-container">
+      <input id="firstname" class="input" input type="text" name="name" type="text" placeholder=" " required />
+      <label for="firstname" class="placeholder">First name</label>
+    </div>
+    <div class="input-container">
+      <input id="lastname" class="input" input type="text" name="Last name" type="text" placeholder=" " required />
+      <label for="lastname" class="placeholder">Last name</label>
+    </div>
+    <div class="input-container">
+        <input id="lastname" class="input" input type="text" name="class"  type="text" placeholder=" " required />
+        <label for="lastname" class="placeholder">Class</label>
+      </div>
+    <div class="input-container">
+      <input id="email" class="input" input type="text" name="email" type="email" placeholder=" " required />
+      <label for="email" class="placeholder">Email</label>
+    </div>
+    <button type="submit" class="submit">Submit</button>
+</form>
+  </div>
+</body>
+</html>
